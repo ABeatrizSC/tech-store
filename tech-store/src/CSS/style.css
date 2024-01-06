@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Ubuntu:wght@400;500;700&display=swap');
+
 
 * {
     margin: 0;
@@ -9,7 +10,7 @@
 
 html {
     font-size: 62.5%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: rgb(241, 241, 241);
 }
 
@@ -27,6 +28,11 @@ h3 {
     font-weight: 500;
 }
 
+h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
 p {
     font-size: 1.5rem;
     font-weight: 500;
@@ -36,22 +42,26 @@ p {
     border: 0;
     background-color: transparent;
     cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1.4rem;
 }
 
 header {
     width: 100%;
-    height: 6rem;
+    height: 6.5rem;
     background-color: #100d28;
-    padding: 2rem 3rem;
+    padding: 2rem 3.5rem;
+    box-shadow: 0px 6px 17px -6px rgba(0,0,0,0.75);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 3.5rem;
     position: fixed;
     top: 0;
+    z-index: 1;
 
-    & .header-logo {
-        width: 15rem;
+    & .header__img {
+        width: 16rem;
     }
 
     & .header__container-icons {
@@ -69,18 +79,21 @@ header {
     height: 100%;
     width: 36rem;
     padding: 3rem;
+    border-left: 0.1rem solid rgba(255, 255, 255, 0.342);
     position: fixed;
     top: 0;
-    right: 0;
-    display: none;
+    right: -36rem;
+    z-index: 2;
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+    transition-duration: 300ms;
     
     &.open {
-        display: flex;
-        flex-flow: column;
-        gap: 3rem;
+        right: 0;
     }
 
-    & .container-cart--header {
+    & .container-cart__header {
         width: 100%;
         height: fit-content;
         color: white;
@@ -89,13 +102,79 @@ header {
         align-items: center;
         gap: 5rem;
 
-         & i {
-            color: white;
-            font-size: 3rem;  
-         }
+        & h3 {
+            font-size: 1.8rem;
+        }
+
+        & i {
+        color: white;
+        font-size: 2.5rem;  
+        }
     }
 
-    .container-cart--footer {
+    #container-cart__content {
+        max-height: 80%;
+        overflow-y: auto;
+        display: flex;
+        flex-flow: column;
+        gap: 0.7rem;
+
+        & .product {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1rem 1rem;
+            display: flex;
+            gap: 1rem;
+            position: relative;
+    
+            & img {
+                height: 6rem;
+            }
+
+            & .product-information {
+                width: 18rem;
+                display: flex;
+                flex-flow: column;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            & .product-button {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+
+                & p {
+                    font-size: 1.5rem;
+                }
+
+                & .decrement {
+                    margin-bottom: 0.4rem;
+                }
+            }
+    
+            & button {
+                & i {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    color: #100d2883;
+        
+                    &:hover {
+                        color: #100d28;
+                    }
+            }
+            }
+        }
+    }
+
+    .container-cart__footer {
         display: flex;
         flex-flow: column;
         gap: 1rem;
@@ -106,15 +185,15 @@ header {
 
         & .button__finalize-puchase {
             width: 100%;
-             background-color: white;
-             padding: 1.1rem 0;
-             border-radius: 1rem;
-             font-weight: 600;
-         }
+            background-color: white;
+            padding: 1.1rem 0;
+            border-radius: 1rem;
+            font-weight: 600;
+        }
     }
 }
 
-#section__products {
+#section-products {
     max-width: 1500px;
     margin: auto;
     padding: 13rem 5rem;
@@ -134,14 +213,20 @@ header {
         display: flex;
         flex-flow: column;
         justify-content: space-between;
-
+        transition: scale ease-in 5s;
+    
         & .product-image {
             width: 20rem;
             height: 25%;
             object-fit: contain;
+            cursor: pointer;
+
+            &:hover {
+                scale: 115%;
+            }
         }
 
-        & .button__add-cart {
+        & .button-add-cart {
             width: 100%;
             background-color: #100d28;
             color: white;
@@ -161,8 +246,6 @@ header {
         }
     }
 }
-
-
 
 footer {
     width: 100%;

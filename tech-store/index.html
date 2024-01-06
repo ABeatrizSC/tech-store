@@ -11,33 +11,34 @@
 </head>
 <body>
     <header>
-        <img class="header-logo" src="src/images/logo_techstore-letreiro.PNG" alt="">
+        <img class="header__img" src="src/images/logo_techstore-letreiro.PNG" alt="">
         <div class="header__container-icons">
             <button class="buttons button__open-cart"><i class="fa-solid fa-cart-shopping"></i></button>
             <button class="buttons"><i class="fa-solid fa-user"></i></button>
         </div>
     </header>
     <div id="container-cart">
-        <div class="container-cart--header">
+        <div class="container-cart__header">
             <h3>Meu carrinho</h3>
             <button class="buttons button__close-cart">
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <div class="container-cart--products">
-            <p>Lista de produtos aqui.</p>
+        <div id="container-cart__content">
+
         </div>
-        <div class="container-cart--footer">
+        <div class="container-cart__footer">
             <p class="cart-price">R$ 0</p>
             <button class="buttons button__finalize-puchase">Finalizar compra</button>
         </div>
     </div>
     <main>
-        <section id="section__products"></section>
+        <section id="section-products">
+        </section>
     </main>
     <footer>
         <a target="_blank" href="https://github.com/ABeatrizSC"><i class="fa-brands fa-github"></i> ABeatrizSC</a>
     </footer>
-    <script src="src/script/main.js"></script>
+    <script src="src/script/main.js" type="module"></script>
 </body>
 </html>
