@@ -3,9 +3,9 @@ import { addToCart } from "./cartMenu.js";
 
 export function catalogueProducts() {
     for (const product of catalogue) {
-      const cartaoProduto = `<div class="container-product">
+      const cartaoProduto = `<div class="container-product product ${product.hardwares ? 'hardwares' : 'perifericos'}">
       <img class="product-image"
-        src="src/images/${product.nomeArquivoImagem}"
+        src="assets/images/${product.nomeArquivoImagem}"
         alt="Carrinho: ${product.nome}."
         style="height: 300px"
       />

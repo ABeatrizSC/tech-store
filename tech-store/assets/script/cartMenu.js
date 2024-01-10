@@ -1,6 +1,6 @@
-import { catalogue } from "./utility.js";
+import { catalogue, lerLocalStorage, salvarLocalStorage } from "./utility.js";
 
-const idsProdutoCarrinhoComQuantidade = {}
+const idsProdutoCarrinhoComQuantidade = lerLocalStorage('carrinho') ?? {};
 
 function openCart() {
     document.getElementById('container-cart').classList.add('open');
@@ -10,31 +10,48 @@ function closeCart() {
     document.getElementById('container-cart').classList.remove('open');
 }
 
+function goToCheckout() {
+    if(Object.keys(idsProdutoCarrinhoComQuantidade).length === 0) {
+        return;
+    }
+    window.location.href = window.location.origin + "/tech-store/checkout.html";
+}
+
 export function cartInitialization() {
     const buttonCloseCart = document.getElementsByClassName('button__close-cart')[0];
     const buttonOpenCart = document.getElementsByClassName('button__open-cart')[0];
+    const buttonFinalizePuchase = document.getElementsByClassName('button__finalize-puchase')[0];
     
-    buttonCloseCart.addEventListener("click", closeCart);
-    buttonOpenCart.addEventListener("click", openCart);
+    buttonCloseCart.addEventListener('click', closeCart);
+    buttonOpenCart.addEventListener('click', openCart);
+    buttonFinalizePuchase.addEventListener('click', goToCheckout);
+
 }
 
 function removerDoCarrinho(idProduct){
     delete idsProdutoCarrinhoComQuantidade[idProduct];
+    salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
     renderizarProdutosCarrinho();
+    atualizarPrecoCarrinho();
 }
 
 function incrementarQtdProduto(idProduct){
     idsProdutoCarrinhoComQuantidade[idProduct]++;
+    salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
     attQtd(idProduct);
+    atualizarPrecoCarrinho();
 }
 
 function decrementarQtdProduto(idProduct){
     if (idsProdutoCarrinhoComQuantidade[idProduct] === 1){
         removerDoCarrinho(idProduct);
-    } else {
-        idsProdutoCarrinhoComQuantidade[idProduct]--;
-        attQtd(idProduct);
+        return;
     }
+
+    idsProdutoCarrinhoComQuantidade[idProduct]--;
+    salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
+    attQtd(idProduct);
+    atualizarPrecoCarrinho();
 }
 
 function attQtd(idProduct){
@@ -52,7 +69,7 @@ function desenharProdutoNoCarrinho(idProduct){
         divElement.classList.add(divElementClass);
     };
 
-    const cartaoProdutosCarrinho = `<img src="src/images/${product.nomeArquivoImagem}" alt="Foto do produto da Tech Store">
+    const cartaoProdutosCarrinho = `<img src="assets/images/${product.nomeArquivoImagem}" alt="Foto do produto da Tech Store">
     <div class="product-information">
     <h4>${product.nome}</h4>
     <p>R$${product.preco}</p>
@@ -75,10 +92,12 @@ function desenharProdutoNoCarrinho(idProduct){
     document.getElementById(`remover-item-${product.id}`).addEventListener('click', () => removerDoCarrinho(idProduct));
 }
 
-function renderizarProdutosCarrinho(){
+export function renderizarProdutosCarrinho(){
     const containerProductsCart = document.getElementById('container-cart__content');
     containerProductsCart.innerHTML = '';
-    idsProdutoCarrinhoComQuantidade
+    for (const idProduct in idsProdutoCarrinhoComQuantidade) {
+        desenharProdutoNoCarrinho(idProduct);
+    }
 }
 
 export function addToCart(idProduct) {
@@ -89,5 +108,17 @@ export function addToCart(idProduct) {
 
     idsProdutoCarrinhoComQuantidade[idProduct] = 1;
 
+    salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
     desenharProdutoNoCarrinho(idProduct);
+    atualizarPrecoCarrinho();
+}
+
+export function atualizarPrecoCarrinho() {
+    const precoCarrinho = document.getElementById('cart-price');
+    let precoTotalCarrinho = 0;
+    for (const idProdutoNoCarrinho in idsProdutoCarrinhoComQuantidade) {
+        precoTotalCarrinho += catalogue.find(p => p.id === idProdutoNoCarrinho).preco * idsProdutoCarrinhoComQuantidade[idProdutoNoCarrinho];
+    }
+
+    precoCarrinho.innerText = `Total: R$ ${precoTotalCarrinho}`;
 }
