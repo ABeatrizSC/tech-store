@@ -29,7 +29,7 @@ function finalizePuchase(evt) {
     salvarLocalStorage('historic', puchaseHistoricUpdated);
     apagarDoLocalStorage('carrinho');
 
-    window.location.href = window.location.origin + "/tech-store/puchases-history.html";
+    window.location.href = window.location.origin + "/tech-store/tech-store/puchases-history.html";
 }
 
 desenharProdutosCheckout();

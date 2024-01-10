@@ -14,7 +14,7 @@ function goToCheckout() {
     if(Object.keys(idsProdutoCarrinhoComQuantidade).length === 0) {
         return;
     }
-    window.location.href = window.location.origin + "/tech-store/checkout.html";
+    window.location.href = window.location.origin + "/tech-store/tech-store/checkout.html";
 }
 
 export function cartInitialization() {
