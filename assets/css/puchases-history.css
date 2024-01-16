@@ -1,0 +1,12 @@
+.section-space {
+    margin: 5rem 0 0;
+}
+
+.section-order {
+    margin: 5rem 5rem 2rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

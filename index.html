@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="html" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seja bem vindo a Tech Store! Espero que goste do meu projeto de criação de um site e-commerce utilizando HTML, css e JavaScript.">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
+    <title>TechStore - Produtos eletrônicos</title>
+    <link rel="shortcut icon" href="assets/images/logo_techstore.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img class="header__img" src="assets/images/logo_techstore-letreiro.PNG" alt="Logo Tech Store">
+        </a>
+        <div class="header__container-icons">
+            <button class="buttons button__open-cart" aria-describedby="Abrir carrinho de compras">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <a href="puchases-history.html">
+                <button class="buttons" aria-describedby="Ir para a página de histórico de compras">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </a>
+        </div>
+    </header>
+    <div id="container-cart">
+        <div class="container-cart__header">
+            <h3>Meu carrinho</h3>
+            <button class="buttons button__close-cart" aria-describedby="Fechar carrinho de compras">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="container-cart__content">
+
+        </div>
+        <div class="container-cart__footer">
+            <p id="cart-price">Total: R$ 0</p>
+            <button class="buttons button__finalize-puchase">Finalizar compra</button>
+        </div>
+    </div>
+    <main>
+        <section id="section-filters" class="section-filters"> 
+            <div>
+                <input id="exibir-todos" type="radio" name="filter" checked/>
+                <label class="select" for="exibir-todos" id="exibir-todos-label">Todos os produtos</label>
+            </div>
+            <div>
+                <input id="exibir-hardwares" type="radio" name="filter"/>
+                <label for="exibir-hardwares" id="exibir-hardwares-label">Hardwares</label>
+            </div>
+            <div>
+                <input id="exibir-perifericos" type="radio" name="filter"/>
+                <label for="exibir-perifericos" id="exibir-perifericos-label">Periféricos</label>
+            </div>
+        </section>
+        <section id="section-products" class="section-products"></section>
+    </main>
+    <footer>
+        <a target="_blank" href="https://github.com/ABeatrizSC">
+            <i class="fa-brands fa-github"></i> 
+            ABeatrizSC
+        </a>
+    </footer>
+    <script src="assets/script/main.js" type="module"></script>
+</body>
+</html>
