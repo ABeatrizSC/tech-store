@@ -12,7 +12,7 @@ h2 {
         flex-wrap: wrap;
         gap: 3rem;
     
-        input {
+        & input {
             padding: 0.5rem 0.7rem;
             border: 0.1rem solid black;
             border-radius: 0.5rem;
