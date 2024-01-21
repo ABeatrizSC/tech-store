@@ -1,4 +1,5 @@
 # Projeto Tech Store
+https://github.com/ABeatrizSC/tech-store/assets/105675205/fbec24cd-0228-464a-8d66-0b1f54967e74
 <h2>📝Sobre</h2>
 <ul>
   <li>Projeto de site e-commerce desenvolvido durante o evento online "Intensivão de JavaScript" realizado pela Hashtag Treinamentos;</li>
