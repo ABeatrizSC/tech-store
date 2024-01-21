@@ -67,13 +67,12 @@ h2 {
         
                 & #cart-price {
                     color: var(--total-price);
+                    font-size: 1.7rem;
                 }
         
                 & .button__finalize-puchase {
                     width: 100%;
                     color: var(--white);
-                    background-color: var(--blue);
-                    border: 0.2rem solid var(--blue);
                     padding: 1.1rem 0;
                     border-radius: 1rem;
                     font-weight: 600;
@@ -81,7 +80,7 @@ h2 {
                     &:hover {
                         color: black;
                         background-color: var(--white);
-                        border-color: var(--blue);
+                        border-color: var(--rich-black);
                     }
                 }
             }

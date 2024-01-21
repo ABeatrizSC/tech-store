@@ -10,11 +10,11 @@ header {
 }
 
 #container-cart {
-    background-color: var(--blue);
+    background-color: var(--rich-black);
     height: 100%;
     width: 36rem;
     padding: 3rem;
-    border-left: 0.1rem solid rgba(255, 255, 255, 0.342);
+    border-left: 0.1rem solid var(--body-color);
     position: fixed;
     top: 0;
     right: -36rem;
@@ -42,8 +42,8 @@ header {
         }
 
         & i {
-        color: var(--white);
-        font-size: 2.5rem;  
+            color: var(--white);
+            font-size: 2.5rem;  
         }
     }
 
@@ -55,7 +55,6 @@ header {
         gap: 0.7rem;
 
         & .product {
-            background-color: var(--white);
             border-radius: 1rem;
             padding: 1rem 1rem;
             display: flex;
@@ -89,6 +88,9 @@ header {
             }
     
             & button {
+                background-color: transparent;
+                border: none;
+
                 & i {
                     font-size: 1.5rem;
                     font-weight: 700;
@@ -96,10 +98,10 @@ header {
                     position: absolute;
                     top: 1rem;
                     right: 1rem;
-                    color: var(--blue)83;
+                    color: var(--rich-black);
         
                     &:hover {
-                        color: var(--blue);
+                        color: var(--rich-black);
                     }
                 }
             }
@@ -139,9 +141,9 @@ header {
         & .select {
             width: fit-content;
             height: fit-content;
-            padding: 1rem;
+            padding: 0.9rem 0.7rem;
             border-radius: 0.5rem;
-            background-color: var(--blue);
+            background-color: var(--rich-black);
             color: var(--white);
         }
     }
@@ -181,11 +183,12 @@ header {
 
         & .button-add-cart {
             width: 100%;
-            background-color: var(--blue);
+            background-color: var(--rich-black);
             color: var(--white);
-            padding: 1rem;
+            font-size: 1.5rem;
+            padding: 1.2rem 1rem;
             border-radius: 0.5rem;
-            border: 0.1rem solid var(--blue);
+            border: 0.1rem solid var(--rich-black);
             transition: color ease-in 200ms;
             display: flex;
             gap: 1rem;
@@ -193,9 +196,29 @@ header {
 
             &:hover {
                 background-color: var(--white);
-                color: var(--blue);
-                border-color: var(--blue);
+                color: var(--rich-black);
+                border-color: var(--rich-black);
             }
         }
     }
+}
+
+@media screen and (max-width: 452px) {
+    .section-filters {
+        & div {
+            & label {
+                font-size: 1.3rem;
+            }
+        }
+    }    
+}
+
+@media screen and (max-width: 380px) {
+    .section-filters {
+        & div {
+            & label {
+                font-size: 1.1rem;
+            }
+        }
+    }    
 }

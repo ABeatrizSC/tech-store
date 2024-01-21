@@ -1,20 +1,20 @@
 import { lerLocalStorage, desenharProdutoNoCarrinhoCheckout } from "./utility.js";
 
 function createHistoricOrder(orderWithDate) {
-    const orderElement = `<p>${ new Date(orderWithDate.date).toLocaleDateString("pt-br", {hour: "2-digit", minute: "2-digit"})}</p>
-    <section id="section-order-${orderWithDate.date}" class="section-order">
-    
+    const orderElement = `
+    <section id="section-order-${orderWithDate.orderDate}" class="section-order">
+    <p>${new Date(orderWithDate.orderDate).toLocaleDateString("pt-BR", {hour: "2-digit", minute: "2-digit"})}</p>
     </section>`;
 
     const main = document.getElementsByTagName('main')[0];
     main.innerHTML += orderElement;
 
     for(const idProduct in orderWithDate.order) {
-        desenharProdutoNoCarrinhoCheckout(idProduct, `section-order-${orderWithDate.date}`, orderWithDate.order[idProduct]);
+        desenharProdutoNoCarrinhoCheckout(idProduct, `section-order-${orderWithDate.orderDate}`, orderWithDate.order[idProduct]);
     }
 }
 
-function renderizarHistoricoPedidos() { /* sem */
+function renderizarHistoricoPedidos() { 
     const historic = lerLocalStorage('historic');
     for (const orderWithDate of historic) {
         createHistoricOrder(orderWithDate);

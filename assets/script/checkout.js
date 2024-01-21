@@ -23,6 +23,7 @@ function finalizePuchase(evt) {
         orderDate: dateNow,
         order: idsProdutoCarrinhoComQuantidade 
     }
+    
     const orderHistoric = lerLocalStorage('historic') ?? [];
     const puchaseHistoricUpdated = [orderNow, ...orderHistoric];
 
